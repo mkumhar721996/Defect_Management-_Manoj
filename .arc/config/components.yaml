@@ -3,18 +3,57 @@ components:
   comp_web_app:
     name: Web App
     kind: web_ui
+    directory: apps/web
+    stack:
+      choices:
+        styling: material-ui
+        language: typescript
+        framework: react (Vite)
+        package_manager: pnpm
+        testing_tool_e2e: playwright
+        testing_tool_unit: vitest
+      notes: database not applicable — browser SPA calling the Defect API
   comp_defect_api:
     name: Defect API
     kind: api_service
+    directory: services/defect-api
+    stack:
+      choices:
+        database: postgresql
+        language: java 21
+        framework: spring boot 3
+        package_manager: maven
+        testing_tool_e2e: spring boot test + testcontainers
+        testing_tool_unit: junit 5
+      notes: styling not applicable — API only
   comp_relational_database:
     name: Relational Database
     kind: managed_service
+    stack:
+      choices:
+        managed_service: Azure Database for PostgreSQL Flexible Server
   comp_attachment_storage:
     name: Attachment Storage
     kind: managed_service
+    stack:
+      choices:
+        managed_service: Azure Blob Storage (GRS/GZRS)
   comp_notification_worker:
     name: Notification Worker
     kind: worker
+    directory: services/notification-worker
+    stack:
+      choices:
+        language: java 21
+        framework: spring boot 3
+        package_manager: maven
+        testing_tool_e2e: spring boot test + testcontainers
+        testing_tool_unit: junit 5
+      notes: no database of its own — notifications are stored by the Defect API;
+        same language and tooling as the Defect API
   comp_job_queue:
     name: Job Queue
     kind: managed_service
+    stack:
+      choices:
+        managed_service: Azure Service Bus (queue)
