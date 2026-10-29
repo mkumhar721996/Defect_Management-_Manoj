@@ -1,0 +1,20 @@
+version: 1
+components:
+  comp_web_app:
+    name: Web App
+    kind: web_ui
+  comp_defect_api:
+    name: Defect API
+    kind: api_service
+  comp_relational_database:
+    name: Relational Database
+    kind: managed_service
+  comp_attachment_storage:
+    name: Attachment Storage
+    kind: managed_service
+  comp_notification_worker:
+    name: Notification Worker
+    kind: worker
+  comp_job_queue:
+    name: Job Queue
+    kind: managed_service
